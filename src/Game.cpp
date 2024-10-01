@@ -13,8 +13,6 @@
 #define VK_RIGHT 77
 #define VK_DOWN 80
 
-
-// 用來移動光標到指定位置
 void setCursorPosition(int x, int y) {
     COORD coord;
     coord.X = x;
@@ -27,12 +25,13 @@ void hideCursor() {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO cursorInfo;
     GetConsoleCursorInfo(hConsole, &cursorInfo);
-    cursorInfo.bVisible = false; // 隱藏光標
+    cursorInfo.bVisible = false;
     SetConsoleCursorInfo(hConsole, &cursorInfo);
 }
 
 
 Game::Game(int width, int height): width(width + 2), height(height + 2), snake(Position(5, 5), 3), food(1, 1), direction(Position(0, 1)), total_score(0){
+    std::cout << width << " x " << height << std::endl;
     isRunning = true;
     lastKey = 0;
     generateFood();
@@ -123,7 +122,7 @@ void Game::render(){
 
     // clear terminal
     hideCursor();
-    setCursorPosition(0, 0); // 將光標移到頂部左邊
+    setCursorPosition(0, 0);
 
     // board
     std::vector<std::vector<char>> board(height, std::vector<char>(width, ' '));
@@ -164,8 +163,8 @@ void Game::render(){
 void Game::generateFood() {
     Position newFoodPosition;
     do {
-        newFoodPosition.x = rand() % width;
-        newFoodPosition.y = rand() % height;
+        newFoodPosition.x = rand() % (width - 3) + 1;
+        newFoodPosition.y = rand() % (height - 3) + 1;
     } while (std::find(snake.body.begin(), snake.body.end(), newFoodPosition) != snake.body.end());
 
     food.setPosition(newFoodPosition.x, newFoodPosition.y);
