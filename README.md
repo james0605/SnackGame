@@ -14,10 +14,18 @@
 5.  **使用Queue來儲存和管理蛇的身體**
     - 透過Queue可以更有效的處理蛇的成長，移動過程中的節點新增與移除。
 6. **物件導向架構**
-    - 透過C++ OOP設計，將遊戲中不同元建(蛇, 食物, 機制等)模組化，提升code的可維護性與擴展性。
+    - 透過C++ OOP設計，將遊戲中不同元件(蛇, 食物, 機制等)模組化，提升code的可維護性與擴展性。
 
 
 ## Installation
+```bash
+# 創建build資料夾
+mkdir build 
+cd build
+# 用CMake build
+cmake .. -G "MinGW Makefiles"
+make
+```
 
 ## Known Issues
 - 當玩家連擊方向鍵會導致來不及處理
