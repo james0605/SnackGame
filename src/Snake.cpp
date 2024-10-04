@@ -1,4 +1,4 @@
-#include "../lib/Snake.h"
+#include "Snake.h"
 
 Snake::Snake(Position start, int start_len = 3) {
     for (int i = 0; i < start_len; i++)

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../lib/Game.h"
+#include "Game.h"
 #include <conio.h>
 #include <cstdlib>
 #include <ctime>
@@ -8,10 +8,6 @@
 #include <thread> 
 #include <windows.h>
 
-#define VK_LEFT 75
-#define VK_UP 72
-#define VK_RIGHT 77
-#define VK_DOWN 80
 
 void setCursorPosition(int x, int y) {
     COORD coord;
@@ -53,6 +49,7 @@ void Game::exit(){
 }
 
 void Game::processInput(){
+    
     if (_kbhit()){
         char key = _getch();
         if (key == -32){
@@ -60,19 +57,19 @@ void Game::processInput(){
             if (key != lastKey){
                 lastKey = key;   
                 switch (key){
-                    case VK_UP: // up
+                    case 72: // up
                         std::cout << "Up arrow pressed" << std::endl;
                         direction = Position(0, -1);
                         break;
-                    case VK_DOWN: // down
+                    case 80: // down
                         std::cout << "Down arrow pressed" << std::endl;
                         direction = Position(0, 1);
                         break;
-                    case VK_LEFT: // left
+                    case 75: // left
                         std::cout << "Left arrow pressed" << std::endl;
                         direction = Position(-1, 0);
                         break;
-                    case VK_RIGHT: // right
+                    case 77: // right
                         std::cout << "Right arrow pressed" << std::endl;
                         direction = Position(1, 0);
                         break;

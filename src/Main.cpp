@@ -1,4 +1,4 @@
-#include "../lib/Game.h"
+#include "Game.h"
 
 #include <ctime>
 #include <iostream>

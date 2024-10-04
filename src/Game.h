@@ -8,10 +8,12 @@ class Game{
 public:
     Game(int width, int height);
     char lastKey;
-    void run();
     Position direction;
-    void processInput();
     int total_score;
+    
+    void run();
+    void processInput();
+
 
 private:
     int width;
@@ -19,8 +21,6 @@ private:
     bool isRunning;
     Snake snake;
     Food food;
-
-    
 
     void update();
     void render();
